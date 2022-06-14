@@ -1,11 +1,15 @@
 {
   "private": true,
+  "name": "team-indicator",
+  "description": "A web application to check the status of your channel-mates!",
+  "version": "1.0.0",
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
     "type-check": "tsc",
-    "docs": "npx typedoc"
+    "docs": "npx typedoc",
+    "export": "npm run build && next export -o build"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
