@@ -60,10 +60,10 @@ export interface AvatarMenuProps {
   username: string;
   imageURL: string | undefined;
   status: WorkStatus;
-  statusText: string;
+  statusText?: string;
   isInAppBar: boolean;
   channels?: string[];
-  refreshComponents: Function;
+  refreshComponents?: Function;
 }
 
 /**

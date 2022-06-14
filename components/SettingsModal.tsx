@@ -43,8 +43,8 @@ export interface SettingsModalProps {
   open: boolean;
   onClose: Function;
   channels: string[];
-  statusText: string;
-  refreshComponents: Function;
+  statusText?: string;
+  refreshComponents?: Function;
 }
 
 /**
@@ -68,7 +68,7 @@ export function SettingsModal({
   const [channelChanged, setChannelChanged] = useState<boolean>(false);
 
   useEffect(() => {
-    setStatus(getStatus(statusText));
+    setStatus(getStatus(statusText ?? ''));
     getSession().then((session) => {
       setChannel(session ? session.user.defaultChannel : '');
     });
@@ -129,7 +129,7 @@ export function SettingsModal({
     axios.post('/api/slack/profile/set', requestBody).then(() => {
       // close the modal
       handleClose();
-      refreshComponents();
+      if (refreshComponents) refreshComponents();
     });
   };
 

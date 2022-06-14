@@ -68,7 +68,6 @@ export function Layout({
 
   return (
     <BackBone
-      title={title}
       username={username}
       mainComponent={mainComponent}
       imageURL={imageURL}
