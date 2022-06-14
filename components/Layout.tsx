@@ -1,41 +1,81 @@
-import React, { ReactNode } from 'react'
-import Link from 'next/link'
-import Head from 'next/head'
+import { ReactElement, PropsWithChildren } from 'react';
+import { WorkStatus } from '@constants/Enums';
+import Head from 'next/head';
+import { BackBone } from './BackBone';
+import { Container, Grid, Paper } from '@mui/material';
 
-type Props = {
-  children?: ReactNode
-  title?: string
+/**
+ * The props type for [[`Layout`]].
+ */
+export interface LayoutProps {
+  children: ReactElement[];
+  username: string;
+  title: string;
+  imageURL: string | undefined;
+  status: WorkStatus;
+  statusText: string;
+  channels: string[];
+  refreshComponents: Function;
 }
 
-const Layout = ({ children, title = 'This is the default title' }: Props) => (
-  <div>
-    <Head>
-      <title>{title}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-    </Head>
-    <header>
-      <nav>
-        <Link href="/">
-          <a>Home</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/about">
-          <a>About</a>
-        </Link>{' '}
-        |{' '}
-        <Link href="/users">
-          <a>Users List</a>
-        </Link>{' '}
-        | <a href="/api/users">Users API</a>
-      </nav>
-    </header>
-    {children}
-    <footer>
-      <hr />
-      <span>I'm here to stay (Footer)</span>
-    </footer>
-  </div>
-)
+/**
+ * Main layout of pages.
+ * @category Component
+ */
+export function Layout({
+  children,
+  username,
+  title = 'Home',
+  imageURL,
+  status,
+  channels,
+  statusText,
+  refreshComponents,
+}: PropsWithChildren<LayoutProps>): ReactElement {
+  const mainComponent = (
+    <>
+      <Head>
+        <title>Slack Team Indicator</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
+        <link rel="shortcut icon" href="/public/logo.svg" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        />
+      </Head>
+      <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={12} lg={12}>
+            <Paper
+              sx={{
+                p: 2,
+                display: 'flex',
+                flexDirection: 'column',
+              }}
+            >
+              {children}
+            </Paper>
+          </Grid>
+        </Grid>
+      </Container>
+    </>
+  );
 
-export default Layout
+  return (
+    <BackBone
+      title={title}
+      username={username}
+      mainComponent={mainComponent}
+      imageURL={imageURL}
+      status={status}
+      channels={channels}
+      statusText={statusText}
+      refreshComponents={refreshComponents}
+    />
+  );
+}
