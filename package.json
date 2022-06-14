@@ -4,17 +4,38 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "docs": "npx typedoc"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/server": "^11.4.0",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/core": "^4.12.3",
+    "@mui/icons-material": "^5.8.0",
+    "@mui/lab": "^5.0.0-alpha.83",
+    "@mui/material": "^5.8.1",
+    "@next-auth/sequelize-adapter": "^1.0.2",
+    "@slack/web-api": "^6.7.0",
+    "@types/node": "^17.0.35",
+    "axios": "^0.27.2",
+    "date-fns": "^2.28.0",
+    "emoji-data-ts": "^1.0.1",
     "next": "latest",
+    "next-auth": "^4.2.1",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "reflect-metadata": "^0.1.13",
+    "sequelize": "^6.20.0"
   },
   "devDependencies": {
-    "@types/node": "^12.12.21",
-    "@types/react": "^17.0.2",
+    "@types/react": "^17.0.45",
     "@types/react-dom": "^17.0.1",
-    "typescript": "4.0"
+    "@types/validator": "^13.7.2",
+    "typedoc": "^0.22.17",
+    "typedoc-theme-hierarchy": "^1.2.1",
+    "typescript": "^4.7.2"
   }
 }
