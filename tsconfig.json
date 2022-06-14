@@ -23,7 +23,8 @@
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"]
     },
-    "typeRoots": ["types/declarations.d.ts"]
+    "typeRoots": ["types/declarations.d.ts"],
+    "strict": false
   },
   "include": [
     "types/next-auth.d.ts",
