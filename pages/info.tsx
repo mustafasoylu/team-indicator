@@ -56,7 +56,7 @@ export default function InfoPage(): ReactElement {
           <Button
             variant="contained"
             onClick={() => {
-              signIn();
+              signIn(undefined, { callbackUrl: '/' });
             }}
             sx={{ mt: 1 }}
           >
