@@ -31,13 +31,14 @@ const mdTheme = createTheme({
  * The props type for [[`BackBone`]].
  */
 export interface BackBoneProps {
-  mainComponent: ReactElement;
-  username: string;
-  imageURL: string | undefined;
-  status: WorkStatus;
-  statusText: string;
-  channels: string[];
-  refreshComponents: Function;
+  mainComponent?: ReactElement;
+  username?: string;
+  imageURL?: string | undefined;
+  status?: WorkStatus;
+  statusText?: string;
+  channels?: string[];
+  refreshComponents?: Function;
+  avatar?: boolean;
 }
 
 /**
@@ -52,6 +53,7 @@ export function BackBone({
   channels,
   statusText,
   refreshComponents,
+  avatar = true,
 }: PropsWithChildren<BackBoneProps>): ReactElement {
   return (
     <ThemeProvider theme={mdTheme}>
@@ -68,12 +70,12 @@ export function BackBone({
             <Box sx={{ flexGrow: 1 }}>
               <Avatar
                 src="https://avatars.slack-edge.com/2022-06-06/3628799051204_26ca10d639cf4e5ad01a_512.jpg"
-                // src={logo}
                 alt="App Logo"
                 variant="rounded"
                 sx={{ width: 64, height: 64 }}
               />
             </Box>
+
             <Typography
               component="h1"
               variant="h5"
@@ -84,15 +86,17 @@ export function BackBone({
             >
               Team Indicator
             </Typography>
-            <AvatarMenu
-              username={username}
-              imageURL={imageURL}
-              status={status}
-              statusText={statusText}
-              isInAppBar={true}
-              channels={channels}
-              refreshComponents={refreshComponents}
-            />
+            {avatar && (
+              <AvatarMenu
+                username={username ?? ''}
+                imageURL={imageURL}
+                status={status ?? WorkStatus.Away}
+                statusText={statusText}
+                isInAppBar={true}
+                channels={channels}
+                refreshComponents={refreshComponents}
+              />
+            )}
           </Toolbar>
         </MuiAppBar>
         <Box

@@ -34,7 +34,7 @@ export const Favicon = (): ReactElement => {
       />
       <link
         rel="stylesheet"
-        href="http://fonts.gstatic.com/s/notosansjp/v42/-F62fjtqLzI2JPCgQBnw7HFowAIO2lZ9hg.otf"
+        href="https://fonts.gstatic.com/s/notosansjp/v42/-F62fjtqLzI2JPCgQBnw7HFowAIO2lZ9hg.otf"
       />
       <meta name="apple-mobile-web-app-title" content="Team Indicator" />
       <meta name="application-name" content="Team Indicator" />

@@ -10,6 +10,7 @@ import { WorkStatus } from '@constants/Enums';
 import { TextField, FormControl, Autocomplete } from '@mui/material';
 
 import { UsersConversationsResponse } from '@slack/web-api';
+import { useRouter } from 'next/router';
 
 /**
  * Index Page
@@ -26,6 +27,8 @@ export default function IndexPage(): ReactElement {
   const [channels, setChannels] = useState<any[]>([]);
   const [channel, setChannel] = useState<UsersConversationsResponse>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  const router = useRouter();
 
   useEffect(() => {
     if (status === 'authenticated') {
@@ -73,7 +76,7 @@ export default function IndexPage(): ReactElement {
           setIsLoading(false);
         });
     } else if (status === 'loading') setIsLoading(true);
-    else signIn();
+    else router.push('/info');
     let interval = setInterval(() => refreshComponents(), 10000);
 
     return () => clearInterval(interval);
@@ -140,7 +143,6 @@ export default function IndexPage(): ReactElement {
     <LoadingSpinner />
   ) : (
     <Layout
-      title="Home"
       username={user.display_name ?? ''}
       imageURL={user.image_32}
       status={user.status}
