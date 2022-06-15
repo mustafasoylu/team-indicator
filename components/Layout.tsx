@@ -8,14 +8,14 @@ import { Container, Grid, Paper } from '@mui/material';
  * The props type for [[`Layout`]].
  */
 export interface LayoutProps {
-  children: ReactElement[];
-  username: string;
-  title: string;
-  imageURL: string | undefined;
-  status: WorkStatus;
-  statusText: string;
-  channels: string[];
-  refreshComponents: Function;
+  children?: ReactElement[];
+  username?: string;
+  imageURL?: string | undefined;
+  status?: WorkStatus;
+  statusText?: string;
+  channels?: string[];
+  refreshComponents?: Function;
+  avatar?: boolean;
 }
 
 /**
@@ -25,12 +25,12 @@ export interface LayoutProps {
 export function Layout({
   children,
   username,
-  title = 'Home',
   imageURL,
   status,
   channels,
   statusText,
   refreshComponents,
+  avatar = true,
 }: PropsWithChildren<LayoutProps>): ReactElement {
   const mainComponent = (
     <>
@@ -75,6 +75,7 @@ export function Layout({
       channels={channels}
       statusText={statusText}
       refreshComponents={refreshComponents}
+      avatar={avatar}
     />
   );
 }
