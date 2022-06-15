@@ -8,7 +8,7 @@ import { Container, Grid, Paper } from '@mui/material';
  * The props type for [[`Layout`]].
  */
 export interface LayoutProps {
-  children?: ReactElement[];
+  children?: ReactElement[] | ReactElement;
   username?: string;
   imageURL?: string | undefined;
   status?: WorkStatus;
